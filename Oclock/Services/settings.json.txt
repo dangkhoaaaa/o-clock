@@ -1,0 +1,9 @@
+{
+  "IsDisplay": true,
+  "IsDarkTheme": true,
+  "ListWorldCurrent": [
+    "Tokyo Standard Time",
+    "Central Standard Time",
+    "India Standard Time"
+  ]
+}

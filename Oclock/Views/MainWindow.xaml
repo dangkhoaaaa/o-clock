@@ -1,0 +1,129 @@
+﻿<metro:MetroWindow
+    x:Class="Oclock.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Oclock.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:prism="http://prismlibrary.com/"
+    xmlns:custom="clr-namespace:Oclock.UserControll"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" xmlns:viewmodels="clr-namespace:Oclock.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModels}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Title="世界瞬間"
+    Width="800"
+    Height="450"
+    MinWidth="250"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Window.Resources>
+
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+            <Border Margin="5" BorderThickness="0.5">
+                <StackPanel>
+
+                    <TextBlock Height="25" Background="gray">
+                    <TextBlock
+                        Margin="9,4,0,0"
+                        FontSize="14"
+                        Foreground="White">
+                        表示設定
+                    </TextBlock>
+                </TextBlock>
+                    <Border BorderBrush="gray" BorderThickness="0.5">
+                        <StackPanel>
+
+                            <CheckBox  
+                            Name="displaymode"
+                            Margin="9,9,0,0"
+                            Content="デジタル時計"
+                            IsChecked="{Binding IsDisplay.Value, Mode=TwoWay}" />
+
+
+
+                            <CheckBox  Command="{Binding ToggleDarkModeCommand}"
+                            x:Name="IsDarkThemeName"
+                            Margin="9,9,0,0"
+                            Content="ダークモード"
+                            IsChecked="{Binding IsDarkTheme.Value, Mode=TwoWay}" />
+
+
+
+
+                            <Button Command="{Binding OpenNewWindowCommand}"
+                            Grid.Column="0"
+                            Width="93"
+                            Margin="9,9,9,9"
+                            HorizontalAlignment="Left"
+                           
+                            Content="画面複製" />
+                            <!--Click="Button_Click"-->
+
+
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+            </Border>
+
+
+
+
+            <!--<StackPanel Margin="10,124,568,-112">
+            <StackPanel Margin="5">
+                <ComboBox ItemsSource="{Binding ZonesDictionary}" DisplayMemberPath="Key"  SelectedValuePath="Value"
+                          SelectedValue="{Binding SelectedItem.Value, Mode=TwoWay}"/>
+                <TextBlock x:Name="Select" Text="{Binding TimeNow.Value, StringFormat={}{0:HH:mm:ss}, FallbackValue='No data'}" />
+
+            </StackPanel>
+        </StackPanel>-->
+
+            <!--<WrapPanel Margin="0,136,0,-108">
+            <local1:DigitalOclock
+                x:Name="clock1" 
+                Grid.Row="0"
+                Grid.Column="0"/>
+
+            <local1:DigitalOclock
+                x:Name="clock2"
+                Grid.Row="0"
+                Grid.Column="1" />
+
+            <local1:DigitalOclock
+                x:Name="clock3"
+                Grid.Row="1"
+                Grid.Column="0" />
+        </WrapPanel>-->
+            <Grid Grid.Row="1">
+                <ItemsControl ItemsSource="{Binding DigitalOclockViewModels}" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <custom:DigitalOclock></custom:DigitalOclock>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+
+
+
+        </Grid>
+    </ScrollViewer>
+
+
+   
+
+
+</metro:MetroWindow>
