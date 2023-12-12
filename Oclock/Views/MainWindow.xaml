@@ -9,7 +9,7 @@
     xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" xmlns:viewmodels="clr-namespace:Oclock.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModels}"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Title="世界瞬間"
+    Title="O-Clock"
     Width="800"
     Height="450"
     MinWidth="250"
@@ -35,7 +35,7 @@
                         Margin="9,4,0,0"
                         FontSize="14"
                         Foreground="White">
-                        表示設定
+                        Menu
                     </TextBlock>
                 </TextBlock>
                     <Border BorderBrush="gray" BorderThickness="0.5">
@@ -44,7 +44,7 @@
                             <CheckBox  
                             Name="displaymode"
                             Margin="9,9,0,0"
-                            Content="デジタル時計"
+                            Content="View"
                             IsChecked="{Binding IsDisplay.Value, Mode=TwoWay}" />
 
 
@@ -52,7 +52,7 @@
                             <CheckBox  Command="{Binding ToggleDarkModeCommand}"
                             x:Name="IsDarkThemeName"
                             Margin="9,9,0,0"
-                            Content="ダークモード"
+                            Content="BackGround Mode"
                             IsChecked="{Binding IsDarkTheme.Value, Mode=TwoWay}" />
 
 
@@ -64,7 +64,7 @@
                             Margin="9,9,9,9"
                             HorizontalAlignment="Left"
                            
-                            Content="画面複製" />
+                            Content="Click" />
                             <!--Click="Button_Click"-->
 
 
